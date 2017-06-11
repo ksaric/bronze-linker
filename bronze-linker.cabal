@@ -18,11 +18,6 @@ library
   exposed-modules:     Lib
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
-  
-  -- linker speed up for linux
-  if os(linux)
-    ghc-options:       -optl-fuse-ld=gold
-    ld-options:        -fuse-ld=gold
 
 executable bronze-linker-exe
   hs-source-dirs:      app
@@ -31,6 +26,9 @@ executable bronze-linker-exe
   build-depends:       base
                      , bronze-linker
   default-language:    Haskell2010
+  -- linker speed up for linux
+  ghc-options:       -optl-fuse-ld=gold
+  ld-options:        -fuse-ld=gold
 
 test-suite bronze-linker-test
   type:                exitcode-stdio-1.0
